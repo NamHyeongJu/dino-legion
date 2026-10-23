@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#2a1d12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>공룡 군단 진격</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="profile">
+      <div class="avatar"><canvas id="avatar"></canvas></div>
+      <div class="pinfo"><span class="pname">공룡 군단장</span>
+        <span class="power"><img src="data:," alt="" id="iconPower"><b id="power">0</b></span></div>
+    </div>
+    <div class="cur" id="goldPill"><img id="iconMeat" src="data:," alt="고기"><span id="gold">0</span></div>
+    <div class="cur gem"><img id="iconAmber" src="data:," alt="호박석"><span id="gems">0</span></div>
+    <button id="btnMenu" class="roundbtn" aria-label="옵션"><img src="data:," alt=""></button>
+  </header>
+
+  <section id="battle">
+    <canvas id="cv"></canvas>
+    <div id="hud">
+      <div id="questBox">
+        <div class="qhead"><span id="questNo">퀘스트 1</span><span class="qrew"><img src="data:," alt=""><b id="questReward">30</b></span></div>
+        <div id="questText">-</div>
+        <div class="qbar"><i></i><span id="questProg">0/0</span></div>
+      </div>
+      <div id="stageBox"><div id="stageName">1-1</div><div id="wavePips"></div>
+        <button id="btnChallenge" hidden>우두머리 도전!</button></div>
+      <div id="hudRight">
+        <button id="btnSpeed" class="hudbtn">x1</button>
+        <button id="btnSound" class="hudbtn" aria-label="효과음">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3z"/><path class="w" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12"/><path class="x" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M15 9l6 6M21 9l-6 6"/></svg>
+        </button>
+        <button id="btnRaid" class="hudbtn raidbtn" aria-label="사룡 레이드"><img src="data:," alt=""><span id="raidTickets">3</span></button>
+      </div>
+      <div id="bossBar" hidden><div class="btop"><span class="bname"></span><span class="bhp"></span></div><div class="bbar"><i></i></div></div>
+      <div id="armyBox"><img src="data:," alt=""><span>군단</span><b id="armyCount">0/30</b></div>
+    </div>
+    <div id="toasts"></div>
+  </section>
+
+  <section id="actionbar">
+    <div id="skillSlots"></div>
+    <button id="btnAuto" aria-label="스킬 자동"><span>AUTO</span></button>
+    <button id="btnSummon">
+      <img class="contract" id="hatchEgg" src="data:," alt="">
+      <span class="stext"><b id="summonLabel">알 부화</b><span class="scost"><img src="data:," alt="" id="iconMeat2"><span id="summonCost">0</span></span><small id="nestHint"></small></span>
+      <em id="emptyBadge">0</em>
+      <span id="tutHand" hidden><span class="hand">👆</span><span class="bubble">공룡이 쓰러지면<br>알을 부화해 보충!</span></span>
+    </button>
+  </section>
+
+  <main id="panel">
+    <div class="tab" id="tab-upgrade"></div>
+    <div class="tab" id="tab-army" hidden></div>
+    <div class="tab" id="tab-skill" hidden></div>
+    <div class="tab" id="tab-summon" hidden></div>
+  </main>
+
+  <nav id="nav">
+    <button data-tab="upgrade"><img data-icon="claw" src="data:," alt=""><span>강화</span></button>
+    <button data-tab="army"><img data-icon="nest" src="data:," alt=""><span>군단·둥지</span></button>
+    <button data-tab="skill"><img data-icon="flame" src="data:," alt=""><span>스킬</span></button>
+    <button data-tab="summon"><img data-icon="egg" src="data:," alt=""><span>부화</span></button>
+  </nav>
+
+  <div id="modal" hidden></div>
+
+  <div id="loading">
+    <div class="legg"></div>
+    <h1>공룡 군단 진격</h1>
+    <p>야생 공룡 무리를 향해 진격하라!</p>
+    <div class="lbar"><i></i></div>
+  </div>
+</div>
+
+<script>
+  // Records the first uncaught error on <html data-err> (handy when checking headless builds).
+  window.addEventListener('error', (e) => { const d = document.documentElement.dataset; if (!d.err) d.err = e.message + ' @ ' + (e.filename || '').split('/').pop() + ':' + e.lineno; });
+</script>
+<script src="js/sheets.js"></script>
+<script src="js/data.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/backdrop.js"></script>
+<script src="js/battle.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
